@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rechercher des labels</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Style pour les images */
+        .image-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Accueil</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/upload">Télécharger une image</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/search">Rechercher des labels</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="container mt-5 text-center">
+        <h1 class="mb-4">Rechercher un label dans GraphDB</h1>
+
+        <!-- Formulaire de recherche -->
+        <form action="/search" method="POST" class="d-flex justify-content-center">
+            <input type="text" name="label" class="form-control w-50 me-2" placeholder="Entrez un label" required>
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </form>
+
+        {% if label %}
+            <!-- Résultats de la recherche -->
+            <br/>
+            <!-- Bouton pour afficher/cacher les images -->
+            {% if images %}
+                <button class="btn btn-secondary mt-3" id="toggleImagesButton" onclick="toggleImages()">Afficher les images associées </button>
+                <br/>
+                <!-- Conteneur des images -->
+                <div id="imagesContainer" class="image-container">
+                    <h6>Images associées au label "{{ label }}" :</h6>
+                    <div class="d-flex justify-content-center flex-wrap">
+                        {% for image in images %}
+                            <img src="{{ url_for('uploaded_file', filename=image) }}" alt="Image associée" class="m-2">
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if results %}
+                <br/>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Subject</th>
+                                <th>Predicate</th>
+                                <th>Object</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for result in results %}
+                            <tr>
+                                <td>{{ result.subject }}</td>
+                                <td>{{ result.predicate }}</td>
+                                <td>{{ result.object }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-warning text-center">
+                    Aucun résultat trouvé pour "{{ label }}".
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script pour afficher/cacher les images -->
+    <script>
+        function toggleImages() {
+            var container = document.getElementById("imagesContainer");
+            var button = document.getElementById("toggleImagesButton");
+
+            // Toggle l'affichage des images
+            if (container.style.display === "none" || container.style.display === "") {
+                container.style.display = "block";
+                button.textContent = "Fermer";
+            } else {
+                container.style.display = "none";
+                button.textContent = "Afficher les images associées";
+            }
+        }
+    </script>
+
+</body>
+</html>
