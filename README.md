@@ -10,12 +10,12 @@ Ce projet permet aux utilisateurs de :
 
 ## Technologies utilisées
 
-* Flask → Backend et gestion des routes.
-* Bootstrap → Mise en page et design (front-end).
-* JavaScript (Fetch API) → Interaction dynamique côté client.
-* YOLOv8 (small) → Détection d’objets.
-* ConceptNet → Enrichissement sémantique.
-* GraphDB → Stockage et interrogation RDF.
+* Flask : Backend et gestion des routes.
+* Bootstrap : Mise en page et design côté front-end.
+* JavaScript (Fetch API) : Interaction dynamique côté client.
+* YOLOv8s : Détection d’objets.
+* ConceptNet : Enrichissement sémantique des objets détectés.
+* GraphDB : Stockage et interrogation RDF.
 
 ## Installation et utilisation
 
