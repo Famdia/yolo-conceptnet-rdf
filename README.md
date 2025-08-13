@@ -53,4 +53,4 @@ pip install -r requirements.txt
 python application.py
 ```
 
-Pour accéder à l'interface web, rendez vous à l'adresse http://localhost:5000
+Pour accéder à l'interface web, rendez vous à l'adresse `http://localhost:5000`
