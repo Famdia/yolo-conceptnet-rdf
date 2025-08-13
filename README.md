@@ -27,24 +27,30 @@ Ce projet permet aux utilisateurs de :
 
 **2. Cloner le projet**
 
-`git clone https://github.com/Famdia/yolo-conceptnet-rdf.git
-`
+```
+git clone https://github.com/Famdia/yolo-conceptnet-rdf.git
+```
 
 **3. Installer les dépendances**
 
 Je vous recommande fortement de créer un environnement virtuel 
 
-`python -m venv venv
+```
+python -m venv venv
 source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate     # Windows`
+venv\Scripts\activate     # Windows
+```
 
 Installer les dépendances contenues dans le fichier requirements.txt
 
-`pip install -r requirements.txt
-`
+```
+pip install -r requirements.txt
+```
 
 **4. Lancer l'application**
 
-`python application.py`
+```
+python application.py
+```
 
 Pour accéder à l'interface web, rendez vous à l'adresse http://localhost:5000
