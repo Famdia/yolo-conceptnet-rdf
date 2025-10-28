@@ -56,4 +56,5 @@ python application.py
 Pour accéder à l'interface web, rendez vous à l'adresse `http://localhost:5000`
 
 ## Aperçu de l'application
-![Aperçu de l’application](aperçu.png)
+![Aperçu de l’application](traitement_image.png)
+![Aperçu de l’application](recherche_label.png)
